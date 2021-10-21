@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Object-oriented JavaScript example</title>
+  </head>
+
+  <body>
+    <p>
+      This example requires you to enter commands in your browser's JavaScript
+      console (see
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools"
+        >What are browser developer tools</a
+      >
+      for more information).
+    </p>
+  </body>
+
+  <script>
+    function Person(first, last, age, gender, interests) {
+      this.name = {
+        first: first,
+        last: last,
+      };
+      this.age = age;
+      this.gender = gender;
+      this.interests = interests;
+      this.bio = function () {
+        
+        let bio_template =this.name.first + " " + this.name.last + " is " + this.age + " years old. She likes interest .";
+        if(this.interests.length === 1){
+          bio_template = bio_template.replace("interest",this.interests[0]);
+        }else if(this.interests.length === 2){
+          bio_template = bio_template.replace("interest",this.interests[0]+" and " + this.interests[1]);
+        }else{
+          for(let i = 0; i < this.interests.length; i++){
+            if(i === this.interests.length - 1){
+              bio_template = bio_template.replace("interest","and "+this.interests[i]+".");
+            }else{
+              bio_template = bio_template.replace("interest",this.interests[i]+", "+this.interests[i+1]+", " +this.interests[i+2])+".";
+            }
+          }
+        }
+        if (this.gender === "male") {
+          alert(bio_template.replace("She", "He"));
+        } else if (this.gender === "female") {
+          alert(bio_template);
+        } else {
+          alert(bio_template.replace("She", this.name.first));
+        }
+        this.greeting = function () {
+          alert("Hi! I'm " + this.name.first + ".");
+        };
+      };
+    }
+
+    let person = new Person("Bob", "Smith", 32, "male", ["music", "skiing"]);
+    let maria = new Person("Maria", "Nambalirwa", 48, "female", [
+      "travel",
+    ]);
+    let anon = new Person("Jules","Kailey",12,"other",["music","drawing","archery"]);
+  </script>
+</html>
