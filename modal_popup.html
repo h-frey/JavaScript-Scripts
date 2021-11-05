@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=content, initial-scale=1.0">
+    <title>Modal Popup</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        button {
+            background-color: rgba(8, 8, 8, 0.746);
+            border-radius: 10px;
+            color: #fff;
+            font-family: poppins;
+            border: none;
+            height: 2rem;
+            width: 5rem;
+        }
+        
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button>Click me</button>
+    <script>
+        let btn = document.querySelector("button");
+        btn.addEventListener('click', popup);
+
+        function popup() {
+            btn.style.display = "none";
+            document.body.style.backgroundColor = "rgba(8, 8, 8, 0.746)";
+
+            let mainDiv = document.createElement("div");
+            mainDiv.setAttribute("style", "display:flex;width:300px;padding:5px;height:300px;justify-content:space-between;");
+            mainDiv.style.backgroundColor = "#fff";
+            mainDiv.textContent = "Thank you for clicking me";
+            document.body.appendChild(mainDiv);
+
+            let subDiv = document.createElement("div");
+            subDiv.setAttribute("style", "display:flex;width:20px;height:20px;");
+            mainDiv.appendChild(subDiv);
+
+            let closeBtn = document.createElement("button");
+            closeBtn.textContent = "X";
+            closeBtn.style.backgroundColor = "#fff";
+            closeBtn.style.color = "#000"
+            subDiv.appendChild(closeBtn);
+
+            closeBtn.addEventListener('click', close);
+
+            function close() {
+                mainDiv.style.display = "none";
+                document.body.style.backgroundColor = "#fff";
+                btn.style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>
