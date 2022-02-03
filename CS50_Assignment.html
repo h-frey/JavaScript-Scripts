@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS50 Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        #title {
+            background-color: #477BFF;
+            height: 20vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #title h1 {
+            text-align: center;
+            color: rgb(246, 246, 246);
+        }
+        
+        button {
+            background-color: #D9EDFF;
+            border: none;
+            border-radius: 3px;
+            padding: 7px;
+            margin: 10px;
+        }
+        
+        button:hover {
+            cursor: pointer;
+        }
+        
+        #part1 {
+            margin: 2rem 0;
+        }
+        
+        #part2 {
+            margin: 2rem 0;
+        }
+        
+        p {
+            margin: 1rem 0.5rem;
+        }
+        
+        section {
+            width: 75vw;
+            margin: auto;
+        }
+        
+        input {
+            padding: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="title">
+            <h1>Trivia!</h1>
+        </div>
+        <section>
+            <div id="part1">
+                <p>Part1: Multiple Choice</p>
+                <hr>
+                <p>What is the approximate ratio of people to sheep in New Zealand?</p>
+                <button class="answer">6 people per 1 sheep</button>
+                <button class="answer" id="correct">3 people per 1 sheep</button>
+                <button class="answer">1 people per 1 sheep</button>
+                <button class="answer">1 people per 3 sheep</button>
+                <button class="answer">1 people per 6 sheep</button>
+            </div>
+            <div id="part2">
+                <p>Part 2: Free Response</p>
+                <hr>
+                <p>In which country is it illegal to won only one one guinea pig,as a lone guinea pig might get lonely?</p>
+                <input id="response" type="text">
+                <button id="submit">Check Answer</button>
+            </div>
+        </section>
+    </div>
+    <script>
+        let correctAnswer = document.querySelector("#correct");
+        let answers = document.getElementsByClassName("answer");
+        let submit = document.querySelector("#submit");
+        let response = document.querySelector("#response");
+        let divTwo = document.querySelector("#part2");
+
+        for (let i = 0; i < answers.length; i++) {
+            answers[i].onclick = function() {
+                if (answers[i] === correctAnswer) {
+                    answers[i].style.backgroundColor = "rgb(49,255,99)";
+                    answers[i].style.color = "white";
+                } else {
+                    answers[i].style.backgroundColor = "rgb(255,49,99)";
+                    answers[i].style.color = "white";
+                }
+            };
+        }
+        submit.onclick = function() {
+
+            const answerText = document.createElement("p");
+            
+            if (response.value === "Switzerland") {
+                divTwo.appendChild(answerText);
+                answerText.textContent = "You are correct";
+                answerText.style.padding = "10px";
+                answerText.style.backgroundColor = "rgba(49,255,99,0.5)";
+            } else {
+                divTwo.appendChild(answerText);
+                answerText.textContent = "You are wrong";
+                answerText.style.padding = "10px";
+                answerText.style.backgroundColor = "rgba(255,49,99,0.5)";
+            }
+        }
+    </script>
+</body>
+
+</html>
