@@ -8,11 +8,10 @@ body {
     margin: 0;
     padding: 0;
     background: #091921;
-    display:flex;
+    display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
     justify-content: center;
-
 }
 
 main {
@@ -36,6 +35,7 @@ main {
     margin-bottom: 2em;
     margin-top: 1em;
     display: flex;
+    flex-direction: column;
     padding: 1em;
     align-items: flex-end;
     justify-content: flex-end;
@@ -43,6 +43,14 @@ main {
     box-shadow: inset 0px -2px 4px rgba(143, 139, 139, 0.5);
     background: #fff;
     font-size: 20px;
+}
+
+#screen1 {
+    height: 50%;
+}
+
+#screen2 {
+    height: 50%;
 }
 
 #screen:hover {
@@ -73,10 +81,9 @@ button:hover {
 }
 
 #evaluateBtn {
-    
     background-color: rgba(218, 16, 16, 0.911);
     color: #fff;
-    outline: 2px solid rgba(27, 14, 10,0.959);
+    outline: 2px solid rgba(27, 14, 10, 0.959);
 }
 
 #clearBtn {
